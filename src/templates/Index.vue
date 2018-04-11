@@ -2,11 +2,14 @@
   <component :is="type" class="index">
     <nav-bar active="Index" :navItems="[
       {name: 'Template', component: 'Index', href: '/#/'},
-      {name: 'Style Guide', href: 'http://localhost:6060/'}
+      {name: 'Style Guide', href: 'http://localhost:6060/'},
+      {name: 'Brad Frost', href: 'http://bradfrost.com'}
     ]"/>
     <wrapper>
       <heading level="h1">Vue Design System</heading>
       <text-style><a href="https://vueds.com">Vue Design System</a> is an open-source tool for building design systems with Vue.js. It provides you and your team a set of organized tools, patterns &amp; practices. It works as the foundation for your application development.</text-style>
+      <butt value="Squeeze Its" />
+        
     </wrapper>
   </component>
 </template>

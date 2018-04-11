@@ -10,6 +10,7 @@
       :value="value"
       :placeholder="placeholder"
       :class="['input', {'input-expand': width === 'expand'}]"
+      v-on:click="doSomething()"
       @input="input($event.target.value)"
       />
   </component>
@@ -64,7 +65,7 @@ export default {
       type: String,
       default: "div",
       validator: value => {
-        return value.match(/(div|section)/)
+        return value.match(/(div)/)
       },
     },
     /**
@@ -113,6 +114,9 @@ export default {
   methods: {
     input(value) {
       this.$emit("change", value)
+    },
+    doSomething: function() {
+      alert("doing something")
     },
   },
 }
@@ -191,6 +195,7 @@ $color-placeholder: tint($color-silver, 50%);
     <form-input label=":hover" hover placeholder="Write your text" />
     <form-input label=":focus" focus placeholder="Write your text" />
     <form-input label="[disabled]" disabled placeholder="Disabled input" />
+    <form-input placeholder="Write your text" />
   </div>
   ```
 </docs>
