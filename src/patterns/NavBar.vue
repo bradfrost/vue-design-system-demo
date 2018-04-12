@@ -1,6 +1,10 @@
 <template>
-  <component :is="type" class="nav">
-    <a v-for="item in navItems" :href="item.href" :class="{active: localActive === item.component}" v-html="item.name"></a>
+  <component :is="type" class="c-primary-nav">
+    <ul class="c-primar-nav__list">
+      <li class="c-primary-nav__item" v-for="item in navItems">
+          <a :href="item.href" class="c-primary-nav__link {active: localActive === item.component}" v-html="item.name"></a>
+      </li>
+    </ul>
   </component>
 </template>
 
@@ -52,36 +56,51 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// Local component variables
-$color-nav-link: $color-bleu-de-france;
-$color-nav-link-active: $color-bleu-de-france;
+/**
+ * Navigation tag
+ */
+.c-primary-nav {
+  display: none;
 
-.nav {
-  @include stack-space($space-base);
-  font-family: $font-family-text;
-  font-size: $font-size-small;
-  line-height: $line-height-base;
-  color: $color-white;
-  text-align: center;
-  width: 100%;
-  @media #{$media-query-large} {
-    // This is how you’d use design tokens with media queries
+  &--is-active {
+    display: block;
+    position: absolute;
+    padding: 1em 2em;
+    top: 67px;
+    right: 0;
+    box-shadow: -3px 3px 5px -2px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    background: #fff;
   }
-  a {
-    color: $color-nav-link;
-    padding: $space-x-small 0;
-    margin: 0 $space-x-small;
-    text-decoration: none;
-    display: inline-block;
-    &:hover {
-      color: $color-nav-link-active;
-    }
-    &.active {
-      border-bottom: 2px solid $color-nav-link;
-      font-weight: $font-weight-bold;
-      color: $color-nav-link;
-    }
+
+  @media all and (min-width: 56rem) {
+    display: block;
+    margin-right: 1rem;
   }
+}
+
+/**
+ * Nav List
+ */
+.c-primary-nav__list {
+  display: none;
+
+  @media all and (min-width: 56rem) {
+    display: flex;
+  }
+
+  .c-primary-nav--is-active & {
+    display: block;
+  }
+}
+
+/**
+ * Nav Links
+ */
+.c-primary-nav__link {
+  font-weight: bold;
+  display: block;
+  padding: 1rem;
 }
 </style>
 
